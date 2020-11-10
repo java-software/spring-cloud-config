@@ -4,6 +4,15 @@ server:
 spring:
   application:
     name: info-server
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: config
+      profile: mysql
+      label: master
+#      uri: http://127.0.0.1:8010
 
 eureka:
   client:
@@ -16,3 +25,9 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     # Eureka Server 最后一次收到心跳的等待上线，超时剔除服务，默认 90 单位是 s
     lease-expiration-duration-in-seconds: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

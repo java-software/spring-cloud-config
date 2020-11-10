@@ -4,6 +4,24 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    # 默认是 git
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          # 仓库地址
+          uri: https://gitee.com/java-software/spring-cloud-config.git
+          # 以下配置可以不配
+          # 登录账户
+          username: username
+          # 登录密码
+          password: password
+          # 配置文件分支, 不配默认 master
+          default-label: master
+          # 配置文件所在根目录, 不配默认当前根目录
+          search-paths: spring-cloud-config
 
 eureka:
   client:
